@@ -124,6 +124,8 @@
           if (result.success) {
             form.reset();
             successMsg.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Submit Quote Request';
           } else {
             throw new Error(result.message || 'Submission failed');
           }
