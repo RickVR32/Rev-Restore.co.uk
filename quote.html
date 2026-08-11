@@ -39,7 +39,7 @@
 <section class="section">
   <div class="container two-col">
     <form class="form-panel" id="quote-form">
-      <input type="hidden" name="access_key" value="0dd98810-8104-4b7f-90c6-b21962d37199">
+      <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE">
       <input type="hidden" name="subject" value="New quote request — Rev-Restore website">
       <input type="hidden" name="from_name" value="Rev-Restore Quote Form">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -123,9 +123,8 @@
 
           if (result.success) {
             form.reset();
+            form.style.display = 'none';
             successMsg.style.display = 'block';
-            btn.disabled = false;
-            btn.textContent = 'Submit Quote Request';
           } else {
             throw new Error(result.message || 'Submission failed');
           }
