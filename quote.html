@@ -38,7 +38,11 @@
 
 <section class="section">
   <div class="container two-col">
-    <form class="form-panel" id="quote-form" action="#" method="POST">
+    <form class="form-panel" id="quote-form">
+      <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+      <input type="hidden" name="subject" value="New quote request — Rev-Restore website">
+      <input type="hidden" name="from_name" value="Rev-Restore Quote Form">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="field">
         <label for="name">Full name</label>
@@ -74,8 +78,8 @@
       </div>
 
       <div class="field">
-        <label for="photos">Photos (optional but recommended)</label>
-        <input type="file" id="photos" name="photos" multiple accept="image/*">
+        <label>Photos</label>
+        <p style="font-size:0.85rem; color:var(--text-faint); margin:0;">No need to upload here — once you submit, you'll get contacted directly and can send photos by text or WhatsApp then.</p>
       </div>
 
       <div class="field">
@@ -86,8 +90,51 @@
         </select>
       </div>
 
-      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Quote Request</button>
+      <button type="submit" id="quote-submit-btn" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Quote Request</button>
+
+      <p id="quote-success" style="display:none; margin-top:18px; padding:14px 16px; background:rgba(210,26,44,0.12); border:1px solid var(--red); color:var(--text); font-size:0.9rem;">
+        Thanks — your quote request has been sent. You'll be contacted directly, usually the same working day.
+      </p>
+      <p id="quote-error" style="display:none; margin-top:18px; padding:14px 16px; background:rgba(210,26,44,0.12); border:1px solid var(--red); color:var(--text); font-size:0.9rem;">
+        Something went wrong sending that — please try again, or email admin@rev-restore.co.uk directly.
+      </p>
     </form>
+
+    <script>
+      const form = document.getElementById('quote-form');
+      const btn = document.getElementById('quote-submit-btn');
+      const successMsg = document.getElementById('quote-success');
+      const errorMsg = document.getElementById('quote-error');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form),
+          });
+          const result = await res.json();
+
+          if (result.success) {
+            form.reset();
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            throw new Error(result.message || 'Submission failed');
+          }
+        } catch (err) {
+          errorMsg.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Submit Quote Request';
+        }
+      });
+    </script>
 
     <aside>
       <div class="spec-list">
@@ -99,7 +146,7 @@
       <div class="form-panel" style="margin-top:30px;">
         <h3 style="margin-bottom:8px;">Prefer to message directly?</h3>
         <p style="font-size:0.88rem; margin-bottom:18px;">All channels land in the same inbox, so however you get in touch, you'll get one consistent reply.</p>
-        <p style="font-size:0.88rem;">hello@rev-restore.co.uk</p>
+        <p style="font-size:0.88rem;">admin@rev-restore.co.uk</p>
       </div>
     </aside>
   </div>
@@ -129,7 +176,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <p>hello@rev-restore.co.uk</p>
+        <p>admin@rev-restore.co.uk</p>
         <p>Workshop hours by appointment</p>
       </div>
     </div>
