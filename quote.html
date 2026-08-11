@@ -123,7 +123,6 @@
 
           if (result.success) {
             form.reset();
-            form.style.display = 'none';
             successMsg.style.display = 'block';
           } else {
             throw new Error(result.message || 'Submission failed');
