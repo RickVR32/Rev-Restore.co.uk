@@ -15,7 +15,7 @@
     <a href="index.html" class="brand-mark">
       <img src="rev-restore_horizontal-lockup.png" alt="Rev-Restore logo" class="header-logo">
     </a>
-    <nav class="main-nav">
+    <nav class="main-nav" id="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html" class="active">Services</a>
@@ -23,7 +23,7 @@
       <a href="contact.html">Contact</a>
       <a href="quote.html" class="nav-cta">Get a Quote</a>
     </nav>
-    <button class="nav-toggle">Menu</button>
+    <button class="nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>
   </div>
 </header>
 
@@ -147,7 +147,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <p>admin@rev-restore.co.uk</p>
+        <p><a href="mailto:admin@rev-restore.co.uk" style="color:inherit;">admin@rev-restore.co.uk</a></p>
         <p>Workshop hours by appointment</p>
       </div>
     </div>
@@ -158,5 +158,17 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    var btn = document.getElementById('nav-toggle-btn');
+    var nav = document.getElementById('main-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('mobile-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.textContent = isOpen ? 'Close' : 'Menu';
+    });
+  })();
+</script>
 </body>
 </html>
