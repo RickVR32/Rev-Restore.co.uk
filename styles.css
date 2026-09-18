@@ -158,7 +158,17 @@ textarea:focus-visible {
 }
 
 @media (max-width: 860px) {
-  .brand-mark img.header-logo { height: 46px; }
+  .brand-mark img.header-logo { height: 66px; }
+  .header-row {
+    position: relative;
+    justify-content: flex-end;
+  }
+  .brand-mark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .footer-brand img.footer-logo {
