@@ -803,3 +803,6 @@ textarea:focus-visible {
   border-color: var(--red);
   outline: none;
 }
+
+.footer-social { margin-top: 10px; }
+.footer-social a { display: inline; }
