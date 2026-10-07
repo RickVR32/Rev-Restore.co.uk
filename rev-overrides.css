@@ -1,0 +1,61 @@
+/* Rev-Restore overrides — loaded after styles.css */
+
+/* ---------- Pill buttons ---------- */
+.btn,
+.main-nav .nav-cta,
+.form-panel .btn,
+button[type="submit"] {
+  border-radius: 999px !important;
+  clip-path: none !important;
+}
+.btn { padding-left: 1.9em; padding-right: 1.9em; }
+.main-nav .nav-cta { padding-left: 1.3em; padding-right: 1.3em; }
+
+/* ---------- Bike backgrounds on page heroes ---------- */
+.subpage-hero.has-bike {
+  position: relative;
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(90deg, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.82) 40%, rgba(8,8,8,0.45) 75%, rgba(8,8,8,0.25) 100%),
+    linear-gradient(0deg, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0) 35%),
+    var(--hero-img);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+.subpage-hero.has-bike .container { position: relative; z-index: 1; }
+
+/* ---------- Bike background on the quote banner ---------- */
+.cta-band {
+  position: relative;
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(0deg, rgba(8,8,8,0.88), rgba(8,8,8,0.78)),
+    url('bike-rear-three-quarter-red-lights-1920.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.cta-band .container { position: relative; z-index: 1; }
+
+/* Phones: darken more so text stays readable over the bike */
+@media (max-width: 760px) {
+  .subpage-hero.has-bike {
+    background-image:
+      linear-gradient(0deg, rgba(8,8,8,0.9), rgba(8,8,8,0.72)),
+      var(--hero-img);
+    background-position: center;
+  }
+}
+
+/* ---------- Homepage hero: keep the headline readable over the bike ---------- */
+.hero .img-slot { background-position: 70% center; }
+.hero .img-slot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.7) 35%, rgba(8,8,8,0.15) 70%, rgba(8,8,8,0) 100%);
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .hero .img-slot::after { background: linear-gradient(0deg, rgba(8,8,8,0.85), rgba(8,8,8,0.6)); }
+}
