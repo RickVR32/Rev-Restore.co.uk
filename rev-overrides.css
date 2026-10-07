@@ -59,3 +59,66 @@ button[type="submit"] {
 @media (max-width: 760px) {
   .hero .img-slot::after { background: linear-gradient(0deg, rgba(8,8,8,0.85), rgba(8,8,8,0.6)); }
 }
+
+/* ---------- Footer social icons ---------- */
+.footer-social { display: flex; gap: 12px; margin-top: 14px; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #cfcfcf; transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.footer-social a:hover { background: #d21a2c; border-color: #d21a2c; color: #fff; transform: translateY(-2px); }
+.footer-social svg { width: 19px; height: 19px; display: block; }
+
+/* ---------- Seasonal themes (switched on by seasonal.js) ---------- */
+.season-ribbon {
+  display: block; text-align: center; padding: 9px 16px;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em;
+  text-decoration: none; color: #fff;
+}
+.season-layer { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+
+/* Halloween — pumpkin orange accents and bats */
+.theme-halloween { --red: #e8650e; --red-bright: #ff8a2a; }
+.theme-halloween .season-ribbon { background: linear-gradient(90deg, #2a0f3d, #e8650e, #2a0f3d); }
+.theme-halloween .btn-primary,
+.theme-halloween .main-nav .nav-cta { background-color: #e8650e !important; border-color: #e8650e !important; }
+.theme-halloween .btn-primary:hover,
+.theme-halloween .main-nav .nav-cta:hover { background-color: #ff8a2a !important; border-color: #ff8a2a !important; }
+.theme-halloween .footer-social a:hover { background: #e8650e; border-color: #e8650e; }
+.theme-halloween .hero .img-slot::before,
+.theme-halloween .subpage-hero.has-bike::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 80% 100%, rgba(232,101,14,0.28), transparent 60%);
+}
+.season-bat {
+  position: absolute; color: #0a0a0a; filter: drop-shadow(0 0 6px rgba(232,101,14,0.55));
+  animation-name: bat-fly; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
+}
+.season-bat svg { width: 100%; height: auto; display: block; animation: bat-flap .35s ease-in-out infinite alternate; }
+@keyframes bat-fly {
+  0%   { transform: translate(-30vw, 0); opacity: 0; }
+  10%  { opacity: .9; }
+  50%  { transform: translate(20vw, -6vh); }
+  90%  { opacity: .9; }
+  100% { transform: translate(70vw, 4vh); opacity: 0; }
+}
+@keyframes bat-flap { from { transform: scaleY(1); } to { transform: scaleY(0.55); } }
+
+/* Christmas — keeps the brand red, adds green trim and snow */
+.theme-xmas .season-ribbon { background: linear-gradient(90deg, #0f4d2a, #b3121f, #0f4d2a); }
+.theme-xmas .site-header { box-shadow: inset 0 -3px 0 #0f6b3a; }
+.theme-xmas .hero .img-slot::before,
+.theme-xmas .subpage-hero.has-bike::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12), transparent 55%);
+}
+.season-snow {
+  position: absolute; border-radius: 50%; background: #fff;
+  animation-name: snow-fall; animation-timing-function: linear; animation-iteration-count: infinite;
+}
+@keyframes snow-fall {
+  0%   { transform: translate(0, -10px); }
+  100% { transform: translate(40px, 105vh); }
+}
