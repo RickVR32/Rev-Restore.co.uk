@@ -122,3 +122,59 @@ button[type="submit"] {
   0%   { transform: translate(0, -10px); }
   100% { transform: translate(40px, 105vh); }
 }
+
+/* ---------- Seasonal icons: in the header quote button (desktop) and left of the logo (mobile) ---------- */
+.main-nav .nav-cta { display: inline-flex; align-items: center; gap: 8px; }
+.season-icon { display: inline-flex; width: 20px; height: 20px; margin-left: -4px; }
+.season-icon svg, .season-mark svg { width: 100%; height: 100%; display: block; }
+.season-mark { display: none; }
+@media (max-width: 900px) {
+  .season-mark {
+    display: inline-flex; width: 34px; height: 34px; flex: 0 0 34px; margin-right: 10px;
+    animation: season-bob 2.6s ease-in-out infinite;
+  }
+  .site-header .header-row { justify-content: flex-start; }
+  .site-header .nav-toggle { margin-left: auto; }
+}
+@keyframes season-bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-3px) rotate(4deg); } }
+
+/* Halloween quote button: glowing pumpkin */
+.theme-halloween .main-nav .nav-cta {
+  box-shadow: 0 0 0 1px rgba(255,138,42,0.6), 0 0 18px rgba(232,101,14,0.55);
+  background-image: radial-gradient(ellipse at 30% 30%, #ffa04d, #e8650e 60%, #b8460a) !important;
+}
+.theme-halloween .season-mark { filter: drop-shadow(0 0 6px rgba(232,101,14,0.7)); }
+
+/* Christmas quote button: candy-cane red with gold glow */
+.theme-xmas .main-nav .nav-cta {
+  background-color: #b3121f !important; border-color: #b3121f !important;
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.13) 0 8px, transparent 8px 16px) !important;
+  box-shadow: 0 0 0 1px rgba(255,211,77,0.55), 0 0 16px rgba(255,211,77,0.35);
+  color: #fff !important;
+}
+.theme-xmas .season-mark { filter: drop-shadow(0 0 6px rgba(255,211,77,0.6)); }
+
+/* November — Bonfire Night & Black Friday: gold and purple, fireworks */
+.theme-november { --red: #e0a800; --red-bright: #ffd34d; }
+.theme-november .season-ribbon { background: linear-gradient(90deg, #1a0b2e, #6a2bb3, #e0a800, #6a2bb3, #1a0b2e); }
+.theme-november .btn-primary,
+.theme-november .main-nav .nav-cta { background-color: #e0a800 !important; border-color: #e0a800 !important; color: #111 !important; }
+.theme-november .btn-primary:hover,
+.theme-november .main-nav .nav-cta:hover { background-color: #ffd34d !important; border-color: #ffd34d !important; }
+.theme-november .main-nav .nav-cta { box-shadow: 0 0 0 1px rgba(199,125,255,0.6), 0 0 18px rgba(255,211,77,0.45); }
+.theme-november .footer-social a:hover { background: #e0a800; border-color: #e0a800; color: #111; }
+.theme-november .hero .img-slot::before,
+.theme-november .subpage-hero.has-bike::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 75% 0%, rgba(106,43,179,0.35), transparent 60%);
+}
+.season-burst { position: absolute; width: 0; height: 0; }
+.season-burst i {
+  position: absolute; left: 0; top: 0; width: 4px; height: 4px; border-radius: 50%;
+  animation: spark 1.5s ease-out forwards;
+}
+@keyframes spark {
+  0%   { transform: rotate(var(--a)) translateX(0); opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: rotate(var(--a)) translateX(var(--d)) translateY(18px); opacity: 0; }
+}
