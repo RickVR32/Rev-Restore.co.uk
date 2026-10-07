@@ -218,3 +218,8 @@ button[type="submit"] {
   .rr-grid { grid-template-columns: repeat(2, minmax(0,1fr)); grid-auto-rows: 170px; }
   .rr-also { grid-template-columns: 1fr; }
 }
+
+/* Tiles with a real image: dark fade at the bottom so the label stays readable */
+.rr-tile.has-img { position: relative; color: #fff !important; background-size: cover; background-position: center; }
+.rr-tile.has-img::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.25) 55%, rgba(0,0,0,.1) 100%); }
+.rr-tile.has-img > * { position: relative; }
