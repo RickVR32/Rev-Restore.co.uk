@@ -62,22 +62,26 @@
         <select id="service" name="service">
           <option value="">Select a service</option>
           <option value="powder-coating">Powder Coating</option>
-          <option value="metal-polishing">Metal Polishing</option>
-          <option value="metal-plating">Metal Plating (Gold / Chrome / Zinc / Nickel / Black Oxide)</option>
-          <option value="vapour-blasting">Vapour Blasting</option>
-          <option value="anodizing">Anodizing</option>
-          <option value="servicing-repairs">Motorbike Servicing &amp; Repairs</option>
-          <option value="full-restoration">Full Restoration</option>
-          <option value="caliper-refurb">Caliper Refurbishment &amp; Painting</option>
-          <option value="fork-restoration">Fork Restoration</option>
-          <option value="ceramic-coating">Ceramic / Heat Coating</option>
+          <option value="sand-blasting">Sand Blasting</option>
+          <option value="aqua-blasting">Aqua Blasting</option>
+          <option value="blast-and-coat">Blast &amp; Powder Coat</option>
+          <optgroup label="Also available">
+            <option value="metal-polishing">Metal Polishing</option>
+            <option value="metal-plating">Metal Plating</option>
+            <option value="anodizing">Anodizing</option>
+            <option value="ceramic-coating">Ceramic / Heat Coating</option>
+            <option value="caliper-refurb">Caliper Refurbishment &amp; Painting</option>
+            <option value="fork-restoration">Fork Restoration</option>
+            <option value="servicing-repairs">Motorbike Servicing &amp; Repairs</option>
+            <option value="full-restoration">Full Restoration</option>
+          </optgroup>
           <option value="not-sure">Not sure yet</option>
         </select>
       </div>
 
       <div class="field">
         <label for="part">Bike / part details</label>
-        <textarea id="part" name="part" placeholder="Make, model, and what needs doing"></textarea>
+        <textarea id="part" name="part" placeholder="What is it, rough size, colour and finish you want"></textarea>
       </div>
 
       <div class="field">
@@ -103,6 +107,14 @@
       </p>
     </form>
 
+    <script id="service-preselect">
+      (function () {
+        var v = new URLSearchParams(location.search).get('service');
+        if (v === 'vapour-blasting') v = 'aqua-blasting';
+        var sel = document.getElementById('service');
+        if (v && sel && sel.querySelector('option[value="' + v + '"]')) sel.value = v;
+      })();
+    </script>
     <script>
       const form = document.getElementById('quote-form');
       const btn = document.getElementById('quote-submit-btn');
@@ -160,15 +172,14 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <img src="rev-restore_icon-square-padded.png" alt="Rev-Restore logo" class="footer-icon">
-        <p>Powder coating, polishing, plating and motorbike restoration, done properly, in one workshop.</p>
+        <p>Powder coating, sand blasting and aqua blasting for anything metal that fits, done properly, in one workshop.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <a href="powder-coating.html">Powder Coating</a>
-        <a href="metal-polishing.html">Metal Polishing</a>
-        <a href="metal-plating.html">Metal Plating</a>
-        <a href="vapour-blasting.html">Vapour Blasting</a>
-        <a href="full-restorations.html">Full Restorations</a>
+        <a href="sand-blasting.html">Sand Blasting</a>
+        <a href="aqua-blasting.html">Aqua Blasting</a>
+        <a href="services.html#also">All services</a>
       </div>
       <div class="footer-col">
         <h4>Site</h4>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Rev-Restore</title>
-<meta name="description" content="Powder coating, polishing, plating, vapour blasting, anodizing and full motorbike restoration services from Rev-Restore.">
+<meta name="description" content="Powder coating, sand blasting and aqua blasting for wheels, frames, gates, furniture and more. Plus polishing, plating and motorbike work.">
 <link rel="icon" href="rev-restore_icon-square-padded.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="rev-overrides.css">
@@ -33,95 +33,123 @@
 <section class="subpage-hero has-bike" style="--hero-img:url('bike-side-profile-1920.jpg');">
   <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
-    <span class="eyebrow">Full Service List</span>
-    <h1>Services</h1>
-    <p class="lede">Ten services, one workshop. Everything below is carried out in-house — no parts sent off to a third party partway through a job.</p>
+    <span class="eyebrow">What We Do</span>
+    <h1>Coat it. Blast it. Bring it back.</h1>
+    <p class="lede">Powder coating, sand blasting and aqua blasting for anything metal that fits. Wheels, frames, gates, furniture, parts. All done in-house.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="container">
-    <div class="plate-grid">
+  <div class="container rr-hero-split">
+    <div>
+      <div class="section-head">
+        <span class="eyebrow">Rusty to Blasted to Coated</span>
+        <h2>Drag to see the process.</h2>
+      </div>
+      <p style="max-width:520px; margin-bottom:26px;">Almost every job follows the same route. The item is blasted back to clean metal, then powder coated in the colour and finish you choose. Drag the slider to watch it happen.</p>
+      <a href="quote.html" class="btn btn-primary">Get a Quote</a>
+    </div>
+    <div class="rr-slider-wrap">
+  <div class="rr-slider" id="wheel-slider" aria-label="Drag to fade the wheel through rusty, blasted and coated">
+    <img class="stage-rusty" src="wheel-rusty.png" alt="Rusted steel wheel before treatment" style="opacity:1">
+    <img class="stage-blasted" src="wheel-blasted.png" alt="Wheel sandblasted to bare metal" style="opacity:0">
+    <img class="stage-coated" src="wheel-coated.png" alt="Wheel finished in gloss black powder coat" style="opacity:0">
+    <span class="tag-lbl" id="stage-tag" style="left:14px">Rusty</span>
+    <div class="handle" id="slider-handle" style="left:0%" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Restoration stage" tabindex="0"></div>
+  </div>
+  <div class="rr-track"><div class="fill" id="slider-fill" style="width:0%"></div></div>
+  <div class="rr-track-labels"><span id="lbl-rusty" class="active">Rusty</span><span id="lbl-blasted">Blasted</span><span id="lbl-coated">Coated</span></div>
+  <p class="rr-stage-desc" id="stage-desc">Years of rust and old paint sitting on bare steel. This is what most items look like before they reach us.</p>
+</div>
+  </div>
+</section>
 
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Core Services</span>
+      <h2>Three ways to bring metal back.</h2>
+    </div>
+    <div class="plate-grid">
       <div class="plate">
         <span class="plate-index">SERVICE / 01</span>
         <h3>Powder Coating</h3>
-        <p>Durable, precise colour and texture finishes on frames, swingarms and small components.</p>
+        <p>A tough, chip-resistant finish baked onto wheels, frames, gates, furniture and almost any metal item that fits.</p>
         <a href="powder-coating.html" class="plate-link">View service</a>
       </div>
 
       <div class="plate">
         <span class="plate-index">SERVICE / 02</span>
-        <h3>Metal Polishing</h3>
-        <p>Mirror finishes on aluminium and steel parts, brought back from raw or corroded stock.</p>
-        <a href="metal-polishing.html" class="plate-link">View service</a>
+        <h3>Sand Blasting</h3>
+        <p>Rust, scale and old paint stripped back to clean bare metal, ready to coat or leave raw.</p>
+        <a href="sand-blasting.html" class="plate-link">View service</a>
       </div>
 
       <div class="plate">
         <span class="plate-index">SERVICE / 03</span>
-        <h3>Metal Plating</h3>
-        <p>Gold, chrome, zinc, nickel and black oxide finishes for parts that need protection as well as shine.</p>
-        <a href="metal-plating.html" class="plate-link">View service</a>
+        <h3>Aqua Blasting</h3>
+        <p>A gentler wet blast for aluminium and delicate parts, leaving a clean satin finish with no harsh etching.</p>
+        <a href="aqua-blasting.html" class="plate-link">View service</a>
       </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 04</span>
-        <h3>Vapour Blasting</h3>
-        <p>The raw satin-aluminium look for engine cases, forks and casings — stripped back to bare metal.</p>
-        <a href="vapour-blasting.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 05</span>
-        <h3>Anodizing</h3>
-        <p>A durable, sealed colour finish for triple clamps, linkages and aluminium components.</p>
-        <a href="anodizing.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 06</span>
-        <h3>Motorbike Servicing &amp; Repairs</h3>
-        <p>Routine servicing and mechanical repair work, carried out in the same workshop.</p>
-        <a href="servicing-repairs.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 07</span>
-        <h3>Full Restorations</h3>
-        <p>Complete frame-off rebuilds — mechanical, cosmetic and finish work under one roof.</p>
-        <a href="full-restorations.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 08</span>
-        <h3>Caliper Refurbishment &amp; Painting</h3>
-        <p>Brake calipers stripped, rebuilt and finished properly, not just sprayed over.</p>
-        <a href="caliper-refurb.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 09</span>
-        <h3>Fork Restoration</h3>
-        <p>Seals, bushes and stanchion polishing — forks rebuilt to a proper working condition.</p>
-        <a href="fork-restoration.html" class="plate-link">View service</a>
-      </div>
-
-      <div class="plate">
-        <span class="plate-index">SERVICE / 10</span>
-        <h3>Ceramic / Heat Coating</h3>
-        <p>Heat-resistant coating for exhausts and headers — protects finish under sustained heat.</p>
-        <a href="ceramic-coating.html" class="plate-link">View service</a>
-      </div>
-
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">If It Fits, We'll Coat It</span>
+      <h2>What we can coat.</h2>
+    </div>
+    <p style="max-width:680px;">A taste of the kinds of items that come through. Not just bikes: if it's metal and it fits the booth, ask.</p>
+    <div class="rr-chips" role="group" aria-label="Filter items">
+      <button type="button" class="rr-chip" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="rr-chip" data-filter="coat" aria-pressed="false">Powder coating</button>
+      <button type="button" class="rr-chip" data-filter="blast" aria-pressed="false">Sand blasting</button>
+      <button type="button" class="rr-chip" data-filter="aqua" aria-pressed="false">Aqua blasting</button>
+    </div>
+    <div class="rr-grid">
+      <div class="rr-tile" data-kind="coat" style="background-color:#1F2123"><span class="tag">Concept</span><div><h3>Alloy wheels</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile" data-kind="coat" style="background-color:#4A4F54"><span class="tag">Concept</span><div><h3>Bike &amp; car frames</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile" data-kind="coat" style="background-color:#35503F"><span class="tag">Concept</span><div><h3>Gates &amp; railings</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile" data-kind="coat" style="background-color:#2F5D8A"><span class="tag">Concept</span><div><h3>Garden furniture</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile" data-kind="coat" style="background-color:#9E2B25"><span class="tag">Concept</span><div><h3>Brake calipers</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile dark" data-kind="coat" style="background-color:#F2B705"><span class="tag">Concept</span><div><h3>Racking &amp; shelving</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile dark" data-kind="blast" style="background-color:#A8ACB0"><span class="tag">Concept</span><div><h3>Rusted panels</h3><p>Sand blasting</p></div></div>
+      <div class="rr-tile dark" data-kind="blast" style="background-color:#C9CBCC"><span class="tag">Concept</span><div><h3>Old paint removed</h3><p>Sand blasting</p></div></div>
+      <div class="rr-tile" data-kind="coat" style="background-color:#3D4F5C"><span class="tag">Concept</span><div><h3>Tools &amp; fixtures</h3><p>Powder coating</p></div></div>
+      <div class="rr-tile dark" data-kind="blast" style="background-color:#8E9296"><span class="tag">Concept</span><div><h3>Chassis &amp; brackets</h3><p>Sand blasting</p></div></div>
+      <div class="rr-tile dark" data-kind="aqua" style="background-color:#7F9BA8"><span class="tag">Concept</span><div><h3>Engine cases</h3><p>Aqua blasting</p></div></div>
+      <div class="rr-tile dark" data-kind="aqua" style="background-color:#A9C0CB"><span class="tag">Concept</span><div><h3>Aluminium parts</h3><p>Aqua blasting</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="also">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Also Available</span>
+      <h2>The rest of the workshop.</h2>
+    </div>
+    <p style="max-width:680px; margin-bottom:26px;">Coating and blasting is the main event, but the same workshop can also handle the jobs below. Ask about any of them on the quote form.</p>
+    <ul class="rr-also">
+      <li>Metal polishing</li>
+      <li>Metal plating (chrome, zinc, nickel, gold, black oxide)</li>
+      <li>Anodizing</li>
+      <li>Ceramic / heat coating</li>
+      <li>Caliper refurbishment &amp; painting</li>
+      <li>Fork restoration</li>
+      <li>Motorbike servicing &amp; repairs</li>
+      <li>Full motorbike restorations</li>
+    </ul>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="container">
-    <span class="eyebrow" style="justify-content:center;">Not Sure What You Need?</span>
-    <h2>Send a few photos, we'll tell you.</h2>
-    <p>If you're not sure which service fits, send details through the quote form and you'll get pointed in the right direction.</p>
+    <span class="eyebrow" style="justify-content:center;">If It Fits, We'll Coat It</span>
+    <h2>Send a photo, get a price.</h2>
+    <p>Tell us what the item is, roughly how big, and the finish you're after. Pricing and turnaround back to you directly.</p>
     <a href="quote.html" class="btn btn-primary">Get a Quote</a>
   </div>
 </section>
@@ -131,15 +159,14 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <img src="rev-restore_icon-square-padded.png" alt="Rev-Restore logo" class="footer-icon">
-        <p>Powder coating, polishing, plating and motorbike restoration, done properly, in one workshop.</p>
+        <p>Powder coating, sand blasting and aqua blasting for anything metal that fits, done properly, in one workshop.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <a href="powder-coating.html">Powder Coating</a>
-        <a href="metal-polishing.html">Metal Polishing</a>
-        <a href="metal-plating.html">Metal Plating</a>
-        <a href="vapour-blasting.html">Vapour Blasting</a>
-        <a href="full-restorations.html">Full Restorations</a>
+        <a href="sand-blasting.html">Sand Blasting</a>
+        <a href="aqua-blasting.html">Aqua Blasting</a>
+        <a href="services.html#also">All services</a>
       </div>
       <div class="footer-col">
         <h4>Site</h4>
@@ -199,5 +226,69 @@
   })();
 </script>
 <script src="seasonal.js" defer></script>
+<script>
+  // Rusty / blasted / coated 3-way fade slider
+  (function () {
+    var wrap = document.getElementById('wheel-slider');
+    if (!wrap) return;
+    var handle = document.getElementById('slider-handle');
+    var fill = document.getElementById('slider-fill');
+    var tag = document.getElementById('stage-tag');
+    var imgs = { r: wrap.querySelector('.stage-rusty'), b: wrap.querySelector('.stage-blasted'), c: wrap.querySelector('.stage-coated') };
+    var lbl = { r: document.getElementById('lbl-rusty'), b: document.getElementById('lbl-blasted'), c: document.getElementById('lbl-coated') };
+    var desc = document.getElementById('stage-desc');
+    var text = {
+      rusty: 'Years of rust and old paint sitting on bare steel. This is what most items look like before they reach us.',
+      blasted: 'Blasted back to clean, bare metal. Every trace of rust and old coating is gone, leaving a surface the new finish can properly grip.',
+      coated: 'Finished in a tough, even powder coat. It resists chips and wear far better than paint, and it\u2019s ready to go straight back on.'
+    };
+    var last = null;
+    function setPos(p) {
+      p = Math.max(0, Math.min(100, p));
+      handle.style.left = p + '%'; fill.style.width = p + '%';
+      handle.setAttribute('aria-valuenow', Math.round(p));
+      var ro, bo, co, l;
+      if (p <= 50) { var t = p / 50; ro = 1 - t; bo = t; co = 0; l = t < 0.5 ? 'Rusty' : 'Blasted'; }
+      else { var u = (p - 50) / 50; ro = 0; bo = 1 - u; co = u; l = u < 0.5 ? 'Blasted' : 'Coated'; }
+      imgs.r.style.opacity = ro; imgs.b.style.opacity = bo; imgs.c.style.opacity = co;
+      tag.textContent = l;
+      tag.style.left = p < 85 ? (p + 2) + '%' : 'auto';
+      tag.style.right = p >= 85 ? '14px' : 'auto';
+      lbl.r.classList.toggle('active', p < 33);
+      lbl.b.classList.toggle('active', p >= 33 && p <= 67);
+      lbl.c.classList.toggle('active', p > 67);
+      var s = p < 33 ? 'rusty' : p <= 67 ? 'blasted' : 'coated';
+      if (s !== last) {
+        last = s; desc.classList.add('fading');
+        setTimeout(function () { desc.textContent = text[s]; desc.classList.remove('fading'); }, 160);
+      }
+    }
+    function pos(e) { var r = wrap.getBoundingClientRect(); return ((e.touches ? e.touches[0].clientX : e.clientX) - r.left) / r.width * 100; }
+    var drag = false;
+    handle.addEventListener('pointerdown', function (e) { drag = true; handle.setPointerCapture(e.pointerId); });
+    wrap.addEventListener('pointermove', function (e) { if (drag) setPos(pos(e)); });
+    handle.addEventListener('pointerup', function () { drag = false; });
+    wrap.addEventListener('click', function (e) { if (e.target !== handle) setPos(pos(e)); });
+    handle.addEventListener('keydown', function (e) {
+      var c = parseFloat(handle.style.left) || 0;
+      if (e.key === 'ArrowLeft') setPos(c - 5);
+      if (e.key === 'ArrowRight') setPos(c + 5);
+    });
+    setPos(0);
+  })();
+
+  // "What we can coat" filter chips
+  (function () {
+    var chips = document.querySelectorAll('.rr-chip');
+    var tiles = document.querySelectorAll('.rr-tile');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        tiles.forEach(function (t) { t.hidden = !(f === 'all' || t.getAttribute('data-kind') === f); });
+      });
+    });
+  })();
+</script>
 </body>
 </html>
