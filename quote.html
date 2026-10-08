@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get a Quote | Rev-Restore</title>
-<meta name="description" content="Request a quote from Rev-Restore — powder coating, polishing, plating and motorbike restoration.">
+<title>Book or Get a Quote | Rev-Restore</title>
+<meta name="description" content="Book your parts in online or ask for a quote. Prices, drop-off days and deposits on our booking page.">
 <link rel="icon" href="rev-restore_icon-square-padded.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="rev-overrides.css">
+<meta http-equiv="refresh" content="0; url=https://book.rev-restore.co.uk/">
+<link rel="canonical" href="https://book.rev-restore.co.uk/">
 </head>
 <body>
 
@@ -30,142 +32,23 @@
   </div>
 </header>
 
-<section class="subpage-hero has-bike" style="--hero-img:url('bike-front-three-quarter-left-1920.jpg');">
+<section class="subpage-hero has-bike" style="--hero-img:url('bike-front-on-1920.jpg');">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / Get a Quote</div>
-    <span class="eyebrow">Start Here</span>
-    <h1>Get a Quote</h1>
-    <p class="lede">Every enquiry lands in one place and gets a reply directly — no chasing across social media or voicemail. Fill in as much as you can; photos help a lot.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a> / Book or get a quote</div>
+    <span class="eyebrow">Booking</span>
+    <h1>Taking you to our booking page</h1>
+    <p class="lede">See prices, pick a drop-off day and pay a small deposit, or send photos for a quote on anything not listed.</p>
+    <p style="margin-top:24px;"><a class="btn btn-primary" href="https://book.rev-restore.co.uk/">Open the booking page</a></p>
   </div>
 </section>
 
-<section class="section">
-  <div class="container two-col">
-    <form class="form-panel" id="quote-form">
-      <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE">
-      <input type="hidden" name="subject" value="New quote request — Rev-Restore website">
-      <input type="hidden" name="from_name" value="Rev-Restore Quote Form">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-      <div class="field">
-        <label for="name">Full name</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-
-      <div class="field">
-        <label for="contact">Email or phone number</label>
-        <input type="text" id="contact" name="contact" required>
-      </div>
-
-      <div class="field">
-        <label for="service">Service required</label>
-        <select id="service" name="service">
-          <option value="">Select a service</option>
-          <option value="powder-coating">Powder Coating</option>
-          <option value="sand-blasting">Sand Blasting</option>
-          <option value="aqua-blasting">Aqua Blasting</option>
-          <option value="blast-and-coat">Blast &amp; Powder Coat</option>
-          <optgroup label="Also available">
-            <option value="metal-polishing">Metal Polishing</option>
-            <option value="metal-plating">Metal Plating</option>
-            <option value="anodizing">Anodizing</option>
-            <option value="ceramic-coating">Ceramic / Heat Coating</option>
-            <option value="caliper-refurb">Caliper Refurbishment &amp; Painting</option>
-            <option value="fork-restoration">Fork Restoration</option>
-            <option value="servicing-repairs">Motorbike Servicing &amp; Repairs</option>
-            <option value="full-restoration">Full Restoration</option>
-          </optgroup>
-          <option value="not-sure">Not sure yet</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="part">Bike / part details</label>
-        <textarea id="part" name="part" placeholder="What is it, rough size, colour and finish you want"></textarea>
-      </div>
-
-      <div class="field">
-        <label>Photos</label>
-        <p style="font-size:0.85rem; color:var(--text-faint); margin:0;">No need to upload here — once you submit, you'll get contacted directly and can send photos by text or WhatsApp then.</p>
-      </div>
-
-      <div class="field">
-        <label for="collection">Do you need collection or delivery?</label>
-        <select id="collection" name="collection">
-          <option value="no">No, I'll drop off / collect</option>
-          <option value="yes">Yes, please quote for this</option>
-        </select>
-      </div>
-
-      <button type="submit" id="quote-submit-btn" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Quote Request</button>
-
-      <p id="quote-success" style="display:none; margin-top:18px; padding:14px 16px; background:rgba(210,26,44,0.12); border:1px solid var(--red); color:var(--text); font-size:0.9rem;">
-        Thanks — your quote request has been sent. You'll be contacted directly, usually the same working day.
-      </p>
-      <p id="quote-error" style="display:none; margin-top:18px; padding:14px 16px; background:rgba(210,26,44,0.12); border:1px solid var(--red); color:var(--text); font-size:0.9rem;">
-        Something went wrong sending that — please try again, or email admin@rev-restore.co.uk directly.
-      </p>
-    </form>
-
-    <script id="service-preselect">
-      (function () {
-        var v = new URLSearchParams(location.search).get('service');
-        if (v === 'vapour-blasting') v = 'aqua-blasting';
-        var sel = document.getElementById('service');
-        if (v && sel && sel.querySelector('option[value="' + v + '"]')) sel.value = v;
-      })();
-    </script>
-    <script>
-      const form = document.getElementById('quote-form');
-      const btn = document.getElementById('quote-submit-btn');
-      const successMsg = document.getElementById('quote-success');
-      const errorMsg = document.getElementById('quote-error');
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'none';
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-
-        try {
-          const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form),
-          });
-          const result = await res.json();
-
-          if (result.success) {
-            form.reset();
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
-          } else {
-            throw new Error(result.message || 'Submission failed');
-          }
-        } catch (err) {
-          errorMsg.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Submit Quote Request';
-        }
-      });
-    </script>
-
-    <aside>
-      <div class="spec-list">
-        <div class="spec-row"><span>Response time</span><span>Same working day, typically</span></div>
-        <div class="spec-row"><span>Quotes</span><span>Free, no obligation</span></div>
-        <div class="spec-row"><span>Collection</span><span>Available on request</span></div>
-      </div>
-
-      <div class="form-panel" style="margin-top:30px;">
-        <h3 style="margin-bottom:8px;">Prefer to message directly?</h3>
-        <p style="font-size:0.88rem; margin-bottom:18px;">All channels land in the same inbox, so however you get in touch, you'll get one consistent reply.</p>
-        <p style="font-size:0.88rem;">admin@rev-restore.co.uk</p>
-      </div>
-    </aside>
-  </div>
-</section>
+<script>
+  // One place to change the booking address. Keeps any #quote on the link.
+  (function () {
+    var target = "https://book.rev-restore.co.uk/" + (location.hash === "#quote" ? "#quote" : "");
+    location.replace(target);
+  })();
+</script>
 
 <footer class="site-footer">
   <div class="container">
@@ -187,6 +70,7 @@
         <a href="gallery.html">Gallery</a>
         <a href="quote.html">Get a Quote</a>
         <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -239,6 +123,5 @@
   })();
 </script>
 <script src="seasonal.js" defer></script>
-<script defer src="https://book.rev-restore.co.uk/t.js"></script>
 </body>
 </html>
