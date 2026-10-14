@@ -226,3 +226,8 @@ button[type="submit"] {
 
 /* Prices on the "also available" list */
 .rr-also .rr-price{display:block;font-size:.88em;opacity:.75;margin-top:2px}
+
+/* About page workshop photos: one wide shot, two portraits underneath */
+.rr-about-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:34px}
+.rr-about-photos img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;aspect-ratio:3/4}
+.rr-about-photos img.wide{grid-column:1 / -1;aspect-ratio:4/3}
