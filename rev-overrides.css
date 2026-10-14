@@ -223,3 +223,6 @@ button[type="submit"] {
 .rr-tile.has-img { position: relative; color: #fff !important; background-size: cover; background-position: center; }
 .rr-tile.has-img::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.25) 55%, rgba(0,0,0,.1) 100%); }
 .rr-tile.has-img > * { position: relative; }
+
+/* Prices on the "also available" list */
+.rr-also .rr-price{display:block;font-size:.88em;opacity:.75;margin-top:2px}
