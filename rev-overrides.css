@@ -231,3 +231,16 @@ button[type="submit"] {
 .rr-about-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:34px}
 .rr-about-photos img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;aspect-ratio:3/4}
 .rr-about-photos img.wide{grid-column:1 / -1;aspect-ratio:4/3}
+
+/* Footer: secure payments + credit row, matching the VG Codeworks / LifeReady footers */
+.footer-pay { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.footer-pay-label { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 0.66rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #9a9a9a; }
+.footer-pay-label svg { width: 14px; height: 14px; stroke: #d21a2c; fill: none; stroke-width: 2; }
+.pay-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.pay-card { display: block; width: 51px; height: 32px; border-radius: 4px; }
+.pay-chip { display: inline-flex; align-items: center; justify-content: center; width: 51px; height: 32px; background: #fff; border-radius: 4px; }
+.pay-chip img { display: block; height: 23px; width: auto; }
+.pay-chip.gpay img { height: 15px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; }
+.footer-bottom a { color: inherit; text-decoration: none; border-bottom: 1px solid #d21a2c; }
+.footer-bottom a:hover { color: #fff; }
