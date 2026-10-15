@@ -244,3 +244,6 @@ button[type="submit"] {
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; }
 .footer-bottom a { color: inherit; text-decoration: none; border-bottom: 1px solid #d21a2c; }
 .footer-bottom a:hover { color: #fff; }
+/* Brand column is centred, so centre the payments block under it */
+.footer-brand .footer-pay { align-items: center; }
+.footer-brand .pay-chips { justify-content: center; }
