@@ -1,25 +1,91 @@
 /* Rev-Restore seasonal themes
-   Runs in the visitor's browser and checks today's date:
-     January   -> New Year          (confetti)
-     February  -> Valentine's        (floating hearts)
-     March     -> Spring             (falling petals)
-     April     -> Easter             (pastel petals, egg)
-     May       -> Ride-out season    (helmet, chequered trim)
-     June      -> Father's Day       (gift)
-     July      -> Summer             (sun glow)
-     August    -> Race season        (chequered flag)
-     September -> Autumn prep        (falling leaves)
-     October   -> Halloween          (bats, pumpkin)
-     November  -> Bonfire Night & Black Friday (fireworks, gold)
-     December  -> Christmas          (snow, Christmas tree)
-   Nothing to switch on or off. To preview any month, add ?theme= with one of:
-   newyear, valentine, spring, easter, rideout, fathers, summer, race, autumn, halloween, november, xmas
-   (or ?theme=off to see the normal site). */
+   Runs in the visitor's browser and checks today's date. Themes only show for
+   short windows around each occasion; the rest of the year (roughly 70%) the
+   site shows the normal Rev-Restore brand with no theme at all.
+
+     New Year       27 Dec - 3 Jan
+     Valentine's    7 - 14 Feb
+     Spring         20 - 31 Mar
+     Easter         Palm Sunday - Easter Monday (moves every year, worked out automatically)
+     Ride-out       Early May bank holiday weekend (Sat - Mon)
+     Father's Day   The week up to Father's Day (3rd Sunday of June)
+     Summer         20 - 31 Jul
+     Race season    August bank holiday weekend (Sat - Mon)
+     Autumn prep    20 - 30 Sep
+     Halloween      24 - 31 Oct
+     Bonfire Night  1 - 5 Nov
+     Black Friday   Black Friday - Cyber Monday
+     Christmas      1 - 26 Dec
+
+   To change a window, edit the WINDOWS list below. Fixed dates are
+   [month, day] with month 1 = Jan. If two windows overlap, the one higher
+   up the list wins.
+
+   Testing:  ?theme=halloween   shows a theme now (newyear, valentine, spring, easter,
+                                rideout, fathers, summer, race, autumn, halloween,
+                                november, blackfriday, xmas)
+             ?theme=off         shows the normal site
+             ?date=2026-12-20   pretends today is that date */
 (function () {
   var params = new URLSearchParams(location.search);
   var forced = params.get('theme');
-  var month = new Date().getMonth(); // 0 = Jan ... 9 = Oct, 10 = Nov, 11 = Dec
-  var theme = forced || ['newyear', 'valentine', 'spring', 'easter', 'rideout', 'fathers', 'summer', 'race', 'autumn', 'halloween', 'november', 'xmas'][month];
+
+  var today = new Date();
+  var fake = /^\d{4}-\d{2}-\d{2}$/.test(params.get('date') || '') ? params.get('date').split('-') : null;
+  if (fake) today = new Date(+fake[0], +fake[1] - 1, +fake[2]);
+  today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  var year = today.getFullYear();
+
+  function day(m, d) { return new Date(year, m - 1, d); }
+  function shift(date, n) { return new Date(date.getFullYear(), date.getMonth(), date.getDate() + n); }
+  // nth weekday of a month (weekday 0 = Sun ... 6 = Sat); n = -1 means the last one
+  function nthWeekday(m, weekday, n) {
+    if (n > 0) {
+      var first = day(m, 1);
+      return shift(first, ((weekday - first.getDay() + 7) % 7) + (n - 1) * 7);
+    }
+    var last = new Date(year, m, 0);
+    return shift(last, -((last.getDay() - weekday + 7) % 7));
+  }
+  function easterSunday(y) { // Anonymous Gregorian algorithm
+    var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4,
+        f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30,
+        i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7,
+        m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31),
+        da = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(y, mo - 1, da);
+  }
+
+  var easter = easterSunday(year);
+  var mayBH = nthWeekday(5, 1, 1);    // first Monday in May
+  var augBH = nthWeekday(8, 1, -1);   // last Monday in August
+  var fathers = nthWeekday(6, 0, 3);  // third Sunday in June
+  var blackFri = nthWeekday(11, 5, 4); // fourth Friday in November
+
+  // [theme, start, end]  (start and end both included)
+  var WINDOWS = [
+    ['newyear',     day(1, 1),            day(1, 3)],
+    ['newyear',     day(12, 27),          day(12, 31)],
+    ['xmas',        day(12, 1),           day(12, 26)],
+    ['valentine',   day(2, 7),            day(2, 14)],
+    ['easter',      shift(easter, -7),    shift(easter, 1)],
+    ['spring',      day(3, 20),           day(3, 31)],
+    ['rideout',     shift(mayBH, -2),     mayBH],
+    ['fathers',     shift(fathers, -6),   fathers],
+    ['summer',      day(7, 20),           day(7, 31)],
+    ['race',        shift(augBH, -2),     augBH],
+    ['autumn',      day(9, 20),           day(9, 30)],
+    ['halloween',   day(10, 24),          day(10, 31)],
+    ['november',    day(11, 1),           day(11, 5)],
+    ['blackfriday', blackFri,             shift(blackFri, 3)]
+  ];
+
+  var theme = forced;
+  if (!theme) {
+    for (var w = 0; w < WINDOWS.length; w++) {
+      if (today >= WINDOWS[w][1] && today <= WINDOWS[w][2]) { theme = WINDOWS[w][0]; break; }
+    }
+  }
   if (!theme || theme === 'off') return;
 
   var ICONS = {
@@ -144,8 +210,13 @@
     },
     november: {
       cls: 'theme-november',
-      ribbon: 'Bonfire Night & Black Friday. Ask about this month’s workshop deals when you get a quote.',
+      ribbon: 'Remember, remember: book your winter coating jobs in now, before the cold sets in.',
       icon: 'firework', particle: 'firework', count: 0
+    },
+    blackfriday: {
+      cls: 'theme-november',
+      ribbon: 'Black Friday weekend at Rev-Restore. Ask about this weekend’s workshop deals when you get a quote.',
+      icon: 'sparkle', particle: null, count: 0
     },
     xmas: {
       cls: 'theme-xmas',
